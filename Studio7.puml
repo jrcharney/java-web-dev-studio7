@@ -1,0 +1,42 @@
+@startuml
+
+skinparam {
+    classFontStyle bold
+}
+hide circle
+
+interface Spinnable <<interface>> {
+    +spinDisc() : void
+}
+
+abstract class BaseDisc {
+    -storageCapacity : int
+    -genre : String
+    -year : int
+}
+
+class CD {
+    -artist : String
+    -album : String
+    +CD()
+    +spinDisc() : void
+}
+
+class DVD {
+    -title : String
+    +DVD()
+    +spinDisc() : void
+}
+
+
+class Main {
+    +{static} main() : void
+}
+
+BaseDisc <|-- CD
+BaseDisc <|-- DVD
+Spinnable <|.. CD
+Spinnable <|.. DVD
+Main o-- BaseDisc
+
+@enduml
